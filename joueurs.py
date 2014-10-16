@@ -1,32 +1,29 @@
 import random
 
-test = 100000
-nbreDeJoueurs = 50
-nbreCartes = 1
-tousLesTests = []
-coupons = open("joueurs.txt", "a")
+nombreTests = 100000 #Nombre de tests a effectuer
+nombreDeJoueurs = 50 #Nombre de joueurs constituant un deck complet
+nombreCartes = 1 #Nombre de cartes par paquet
+resultats = [] #Variable contenant les differents resultats obtenus
 
-for i in range(0, test):
-	resultats = []
+for i in range(0, nombreTests):
+	deck = []
 	compteur = 0
-	while len(resultats) < nbreDeJoueurs:
+	while len(deck) < nombreDeJoueurs: #Tant que le deck n'est pas complet
 		lances = []
-		while len(lances) < nbreCartes:
-			l = random.randint(0,nbreDeJoueurs)
+		while len(lances) < nombreCartes: #Creation du packet achete a nombreCartes cartes, sans doublons
+			l = random.randint(0,nombreDeJoueurs)
 			if(not(l in(lances))):
 				lances.append(l)
 		for l in lances:
-			if not(l in(resultats)):
-				resultats.append(l)
+			if not(l in(deck)): #Si la carte n'est pas deja possedee
+				deck.append(l)
 		compteur += 1
-	tousLesTests.append(compteur)
+	resultats.append(compteur)
 	print(str(compteur))
-	coupons.write(str(compteur) + "\n")
 
-coupons.close()
 
 moyenne = 0.0
-for i in tousLesTests:
+for i in resultats:
 	moyenne += i
-moyenne /= test
+moyenne /= nombreTests
 print(">> " + str(moyenne))
