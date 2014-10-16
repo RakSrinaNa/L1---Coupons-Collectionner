@@ -1,25 +1,22 @@
 import random
 
-test = 100000 
-tousLesTests = []
-coupons = open("coupons.txt", "a")
+tailleDeck = 20 #Taille du deck a obtenir
+nombreTests = 100000 #Nombre de test a effectuer
+resultats = [] #Variable contenant les differents resultats obtenus
 
-for i in range(0, test):
-	resultats = []
+for i in range(0, nombreTests):
+	deck = []
 	compteur = 0
-	while len(resultats) < 20:
-		lance = random.randint(0,20)
-		if not(lance in(resultats)):
+	while len(deck) < tailleDeck: #Tant que notre deck n'est pas complet
+		lance = random.randint(0,20) #On obtient un coupon au hasard
+		if not(lance in(deck)): #Si le coupon n'est pas deja possede
 			resultats.append(lance)
 		compteur += 1
-	tousLesTests.append(compteur)
+	resultats.append(compteur)
 	print(str(compteur))
-	coupons.write(str(compteur) + "\n")
-
-coupons.close()
 
 moyenne = 0.0
-for i in tousLesTests:
+for i in resultats:
 	moyenne += i
-moyenne /= test
+moyenne /= nombreTests
 print(">> " + str(moyenne))
