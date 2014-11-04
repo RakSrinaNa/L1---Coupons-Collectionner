@@ -8,7 +8,7 @@ for i in range(0, nombreTests):
 	deck = []
 	compteur = 0
 	while len(deck) < tailleDeck: #Tant que notre deck n'est pas complet
-		lance = random.randint(0,20) #On obtient un coupon au hasard
+		lance = random.randint(0,tailleDeck) #On obtient un coupon au hasard
 		if not(lance in(deck)): #Si le coupon n'est pas deja possede
 			resultats.append(lance)
 		compteur += 1
