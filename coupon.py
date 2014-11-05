@@ -10,7 +10,7 @@ for i in range(0, nombreTests):
 	while len(deck) < tailleDeck: #Tant que notre deck n'est pas complet
 		lance = random.randint(0,tailleDeck) #On obtient un coupon au hasard
 		if not(lance in(deck)): #Si le coupon n'est pas deja possede
-			resultats.append(lance)
+			deck.append(lance)
 		compteur += 1
 	resultats.append(compteur)
 	print(str(compteur))
